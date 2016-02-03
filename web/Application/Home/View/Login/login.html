@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><HTML 
+xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <meta content="IE=11.0000" http-equiv="X-UA-Compatible"> 
+<meta http-equiv="content-type" content="text/html; charset=utf-8"> 
+<title> {:C('WEB_NAME')} </title> 
+<link rel="icon" type="image/png" href="__PUBLIC__/Admin/images/favicon.png">  
+<load href="__PUBLIC__/Login/js/jquery-1.9.1.min.js" /> 
+<load href="__PUBLIC__/Login/js/login.js" /> 
+<load href="__PUBLIC__/Login/css/login.css" />  
+<meta name="generator" content="mshtml 11.00.9600.17496">
+</head> 
+
+<body>
+<div class="top_div"></div>
+<div class="form_div">
+<div class="owl">
+<div class="tou"></div>
+<div class="initial_left_hand" id="left_hand"></div>
+<div class="initial_right_hand" id="right_hand"></div>
+</div>
+
+<form action="{:U('Login/login')}" method="post" >
+<p class="user_p">
+    <span class="u_logo"></span>         
+    <input class="ipt" type="text" placeholder="请输入用户名" name="user_name" /> 
+</p>
+<p class="pwd_p">
+<span class="p_logo"></span>         
+<input class="ipt" type="password" placeholder="请输入密码" name="user_passwd" id="password" />
+</p>
+
+<div class="login_div">
+<p class="login_p">
+
+<span class="right">
+    <a class="reg" onclick="alert( '联系技术：czhyusure@163.com' );"> 注册 </a> 
+    <input type="submit" class="login" value="登录" > 
+</span>         
+</p>
+</div>
+</div>
+</form>
+        
+</body>
+
+</html>

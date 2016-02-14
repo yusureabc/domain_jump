@@ -1,0 +1,140 @@
+<!-- 头部文件 -->
+<include file="Public/header" />  
+<!-- 左侧菜单 -->
+<include file="Public/left_menu" />        
+<!-- 左侧菜单 -->
+<include file="Public/top" />
+            
+<div class="content-box"><!-- Start Content Box -->        
+<div class="content-box-header">                    
+    <h3>域名列表</h3>                                   
+    <div class="clear"></div>                    
+</div> <!-- End .content-box-header -->
+     
+     <div class="content-box-content">
+         
+         <div class="tab-content default-tab" id="tab1">              
+             <table>                 
+                 <thead>
+                     <tr>
+                        <th><input class="check-all" type="checkbox" /></th>
+                        <th>名称</th>
+                        <th>域名</th>
+                        <th>跳转至域名</th>
+                        <th>结束时间</th>
+                        <th>操作</th>
+                     </tr>
+                     
+                 </thead>
+
+                 <tbody>
+                     
+                     <tr>
+                         <td><input type="checkbox" /></td>
+                         <td>Lorem ipsum dolor</td>
+                         <td><a href="#" title="title">Sit amet</a></td>
+                         <td>Consectetur adipiscing</td>
+                         <td>Donec tortor diam</td>
+                         <td>
+                             <!-- Icons -->
+                              <a href="#" title="Edit"><img src="__PUBLIC__/Admin/images/icons/pencil.png" alt="Edit" /></a>
+                              <a href="#" title="Delete"><img src="__PUBLIC__/Admin/images/icons/cross.png" alt="Delete" /></a> 
+                              <a href="#" title="Edit Meta"><img src="__PUBLIC__/Admin/images/icons/hammer_screwdriver.png" alt="Edit Meta" /></a>
+                         </td>
+                     </tr>
+                 </tbody>
+                 
+                 <tfoot>
+                     <tr>
+                         <td colspan="6">
+                             <div class="bulk-actions align-left">
+                                 <select name="dropdown">
+                                     <option value="option1">Choose an action...</option>
+                                     <option value="option2">Edit</option>
+                                     <option value="option3">Delete</option>
+                                 </select>
+                                 <a class="button" href="#">Apply to selected</a>
+                             </div>
+                             
+                             <div class="pagination">
+                                 <a href="#" title="First Page">第一页</a><a href="#" title="Previous Page">上一页</a>
+                                 <a href="#" class="number" title="1">1</a>
+                                 <a href="#" class="number" title="2">2</a>
+                                 <a href="#" class="number current" title="3">3</a>
+                                 <a href="#" class="number" title="4">4</a>
+                                 <a href="#" title="Next Page">下一页</a><a href="#" title="Last Page">最后一页</a>
+                             </div> <!-- End .pagination -->
+                             <div class="clear"></div>
+                         </td>
+                     </tr>
+                 </tfoot>
+             </table>
+             
+         </div> <!-- End #tab1 -->
+         
+         <div class="tab-content" id="tab2">
+         
+             <form action="" method="post">
+                 
+                 <fieldset> <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
+                     
+                     <p>
+                         <label>Small form input</label>
+                             <input class="text-input small-input" type="text" id="small-input" name="small-input" /> <span class="input-notification success png_bg">Successful message</span> <!-- Classes for input-notification: success, error, information, attention -->
+                             <br /><small>A small description of the field</small>
+                     </p>
+                     
+                     <p>
+                         <label>Medium form input</label>
+                         <input class="text-input medium-input datepicker" type="text" id="medium-input" name="medium-input" /> <span class="input-notification error png_bg">Error message</span>
+                     </p>
+                     
+                     <p>
+                         <label>Large form input</label>
+                         <input class="text-input large-input" type="text" id="large-input" name="large-input" />
+                     </p>
+                     
+                     <p>
+                         <label>Checkboxes</label>
+                         <input type="checkbox" name="checkbox1" /> This is a checkbox <input type="checkbox" name="checkbox2" /> And this is another checkbox
+                     </p>
+                     
+                     <p>
+                         <label>Radio buttons</label>
+                         <input type="radio" name="radio1" /> This is a radio button<br />
+                         <input type="radio" name="radio2" /> This is another radio button
+                     </p>
+                     
+                     <p>
+                         <label>This is a drop down list</label>              
+                         <select name="dropdown" class="small-input">
+                             <option value="option1">Option 1</option>
+                             <option value="option2">Option 2</option>
+                             <option value="option3">Option 3</option>
+                             <option value="option4">Option 4</option>
+                         </select> 
+                     </p>
+                     
+                     <p>
+                         <label>Textarea with WYSIWYG</label>
+                         <textarea class="text-input textarea wysiwyg" id="textarea" name="textfield" cols="79" rows="15"></textarea>
+                     </p>
+                     
+                     <p>
+                         <input class="button" type="submit" value="Submit" />
+                     </p>
+                     
+                 </fieldset>
+                 
+                 <div class="clear"></div><!-- End .clear -->
+                 
+             </form>
+             
+         </div> <!-- End #tab2 -->        
+         
+     </div> <!-- End .content-box-content -->   
+       
+</div> <!-- End .content-box -->    
+
+<!-- 底部文件 -->
+<include file="Public/footer" />

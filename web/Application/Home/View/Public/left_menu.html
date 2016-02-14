@@ -15,74 +15,46 @@
             <div id="profile-links">
                 您好, <a href="#" title="Edit your profile"> {:session('user_info.user_name')} </a>,<br /> 
                 欢迎登陆{:C('WEB_NAME')}<br /><br />                
-                <a href="#" title="View the Site">修改密码</a> | 
+                <a href="{:U( 'Setting/up_passwd' )}" title="View the Site">修改密码</a> | 
                 <a href="{:U('Login/logout')}" title="Sign Out">退出</a>
             </div>        
             
             <ul id="main-nav">  <!-- Accordion Menu -->
                 
                 <li>
-                    <a href="#" class="nav-top-item no-submenu"> <!-- Add the class "no-submenu" to menu items with no sub menu -->
+                    <a href="{:U( 'Index/index' )}" class="nav-top-item no-submenu {:current_controller( 'Index' )}">
                         首页
                     </a>       
                 </li>
                 
                 <li> 
-                    <a href="#" class="nav-top-item current"> <!-- Add the class "current" to current menu item -->
-                    文章
+                    <a href="#" class="nav-top-item {:current_controller( 'Domain' )}">
+                    域名管理
                     </a>
                     <ul>
-                        <li><a href="#">新建文章</a></li>
-                        <li><a class="current" href="#">管理文章</a></li> <!-- Add class "current" to sub menu items also -->
-                        <li><a href="#">管理评论</a></li>
-                        <li><a href="#">管理分类</a></li>
+                        <li><a class="{:current_action( 'Domain', 'add' )}" href="{:U( 'Domain/add' )}">添加域名</a></li>
+                        <li><a class="{:current_action( 'Domain', 'domain_list' )}" href="{:U( 'Domain/domain_list' )}">域名列表</a></li> 
+                        <li><a class="{:current_action( 'Domain', 'edit' )}" href="{:U( 'Domain/edit' )}">编辑域名</a></li>
                     </ul>
                 </li>
                 
                 <li>
-                    <a href="#" class="nav-top-item">
-                    页面
+                    <a href="#" class="nav-top-item {:current_controller( 'Logs' )}">
+                    操作记录
                     </a>
                     <ul>
-                        <li><a href="#">创建新页面</a></li>
-                        <li><a href="#">管理页面</a></li>
+                        <li><a class="{:current_action( 'Logs', 'list' )}" href="{:U( 'Logs/list' )}">日志记录</a></li>
                     </ul>
                 </li>
                 
                 <li>
-                    <a href="#" class="nav-top-item">
-                        图片相册
-                    </a>
-                    <ul>
-                        <li><a href="#">上传图片</a></li>
-                        <li><a href="#">管理相册</a></li>
-                        <li><a href="#">管理图片</a></li>
-                        <li><a href="#">相册设置</a></li>
-                    </ul>
-                </li>
-                
-                <li>
-                    <a href="#" class="nav-top-item">
-                        活动日历
-                    </a>
-                    <ul>
-                        <li><a href="#">日历查看</a></li>
-                        <li><a href="#">添加活动</a></li>
-                        <li><a href="#">日历设置</a></li>
-                    </ul>
-                </li>
-                
-                <li>
-                    <a href="#" class="nav-top-item">
+                    <a href="#" class="nav-top-item {:current_controller( 'Setting' )}">
                         设置
                     </a>
                     <ul>
-                        <li><a href="#">角色添加</a></li>
-                        <li><a href="#">用户管理</a></li>
-                        <li><a href="#">个人资料</a></li>
-                        <li><a href="#">用户权限</a></li>
+                        <li><a class="{:current_action( 'Setting', 'up_passwd' )}" href="{:U( 'Setting/up_passwd' )}">修改密码</a></li>
                     </ul>
-                </li>      
+                </li>
                 
             </ul> <!-- End #main-nav -->
             

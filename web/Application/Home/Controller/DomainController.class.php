@@ -7,6 +7,7 @@ use Think\Controller;
  */
 class DomainController extends Controller
 {
+    const page_size = 10;
     /**
      * 跳转域名列表
      * @author Yusure  http://yusure.cn
@@ -16,6 +17,30 @@ class DomainController extends Controller
      */
     public function domain_list()
     {
+        $domain_model = D( 'Domain' );
+        $page = I( 'get.p', 1, 'intval' );
+        $page .= ','.self::page_size;
+
+        /* 条件搜索 Start */
+        $condition = array();
+        if ( I( 'get.name', '', 'trim' ) != '' )
+        {
+            $condition['name'] = array( 'like', '%'. I( 'get.name', '', 'trim' ) .'%' );
+        }
+        if ( I( 'get.domain', '', 'trim' ) != '' )
+        {
+            $condition['domain'] = I( 'get.domain', '', 'trim' );
+        }
+        /* 条件搜索 End */
+
+
+        $domain_list = $domain_model->get_list( $condition, '*', $page );
+        $domain_num  = $domain_model->get_count( $condition );
+
+        $Page       = new \Think\Page( $domain_num, self::page_size );// 实例化分页类 传入总记录数和每页显示的记录数
+        $show       = $Page->show();// 分页显示输出
+        $this->assign( 'page', $show );// 赋值分页输出
+        $this->assign( 'domain_list', $domain_list );
         $this->display();
     }
 
@@ -110,5 +135,32 @@ class DomainController extends Controller
         $condition['domain'] = $domain;
         $res = $domain_model->get_one( $condition, 'domain_id' );
         if ( $res ) $this->error( '域名已存在' );
+    }
+
+    /**
+     * AJAX检查域名是否重复
+     * @author Yusure  http://yusure.cn
+     * @date   2016-02-14
+     * @param  [param]
+     * @return [type]     [description]
+     */
+    public function checkOnceAjax()
+    {
+        $domain_model = D( 'Domain' );
+        $domain = I( 'post.param', '', 'trim' ) or $this->error( '请填写域名' ) ;
+        $condition = array();
+        $condition['domain'] = $domain;
+        $res = $domain_model->get_one( $condition, 'domain_id' );
+        if ( $res ) 
+        {
+            $this->error( '域名已存在' );
+        }
+        else 
+        {
+            $succ_data = array();
+            $succ_data['status'] = 'y';
+            $succ_data['info']   = '通过信息验证！';
+            exit( json_encode( $succ_data ) );
+        }
     }
 }

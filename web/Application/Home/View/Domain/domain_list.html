@@ -17,53 +17,58 @@
              <table>                 
                  <thead>
                      <tr>
-                        <th><input class="check-all" type="checkbox" /></th>
                         <th>名称</th>
                         <th>域名</th>
                         <th>跳转至域名</th>
                         <th>结束时间</th>
                         <th>操作</th>
-                     </tr>
-                     
+                     </tr>  
+                     <form action="?" method="get">
+                     <div class="bulk-actions align-left">
+                        名称：
+                        <input class="text-input small-input" type="text" id="name" name="name" value="<?php echo I('get.name'); ?>" />
+                        域名：
+                        <input class="text-input small-input" type="text" id="domain" name="domain" value="<?php echo I('get.domain'); ?>" />
+                        <input type="submit" class="button" value="搜索">  
+                        <?php if ( I('get.name') || I( 'get.domain' ) ) { ?>
+                        <a class="button" href="{:U('Domain/domain_list')}"> 撤销 </a>   
+                        <?php } ?>      
+                     </div>  
+                     </form>                 
                  </thead>
 
                  <tbody>
-                     
+                    <?php foreach ( $domain_list as $k => $domain ) { ?> 
                      <tr>
-                         <td><input type="checkbox" /></td>
-                         <td>Lorem ipsum dolor</td>
-                         <td><a href="#" title="title">Sit amet</a></td>
-                         <td>Consectetur adipiscing</td>
-                         <td>Donec tortor diam</td>
+                         <td> <?php echo $domain['name']; ?> </td>
                          <td>
-                             <!-- Icons -->
-                              <a href="#" title="Edit"><img src="__PUBLIC__/Admin/images/icons/pencil.png" alt="Edit" /></a>
-                              <a href="#" title="Delete"><img src="__PUBLIC__/Admin/images/icons/cross.png" alt="Delete" /></a> 
-                              <a href="#" title="Edit Meta"><img src="__PUBLIC__/Admin/images/icons/hammer_screwdriver.png" alt="Edit Meta" /></a>
+                             <a href="http://<?php echo $domain['domain']; ?>" target="_blank">
+                                <?php echo $domain['domain']; ?>
+                             </a>
+                         </td>
+                         <td> <?php echo $domain['jump_domain']; ?> </td>
+                         <td> <?php echo date( 'Y-m-d', $domain['end_time'] ); ?> </td>
+                         <td>
+                              <a href="{:U( 'Domain/edit', array( 'domain_id' => $domain['domain_id'] ) )}" title="Edit"><img src="__PUBLIC__/Admin/images/icons/pencil.png" alt="Edit" /></a>
                          </td>
                      </tr>
+                     <?php } ?>
                  </tbody>
                  
                  <tfoot>
                      <tr>
-                         <td colspan="6">
-                             <div class="bulk-actions align-left">
-                                 <select name="dropdown">
-                                     <option value="option1">Choose an action...</option>
-                                     <option value="option2">Edit</option>
-                                     <option value="option3">Delete</option>
-                                 </select>
-                                 <a class="button" href="#">Apply to selected</a>
-                             </div>
-                             
-                             <div class="pagination">
+                         <td colspan="6">                             
+                             <!-- <div class="pagination">
                                  <a href="#" title="First Page">第一页</a><a href="#" title="Previous Page">上一页</a>
                                  <a href="#" class="number" title="1">1</a>
                                  <a href="#" class="number" title="2">2</a>
                                  <a href="#" class="number current" title="3">3</a>
                                  <a href="#" class="number" title="4">4</a>
                                  <a href="#" title="Next Page">下一页</a><a href="#" title="Last Page">最后一页</a>
-                             </div> <!-- End .pagination -->
+                             </div>  -->
+                             <div class="pagination">
+                             <?php echo $page; ?>
+                             </div>
                              <div class="clear"></div>
                          </td>
                      </tr>

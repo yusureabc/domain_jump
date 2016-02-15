@@ -20,10 +20,12 @@
                         <th>名称</th>
                         <th>域名</th>
                         <th>跳转至域名</th>
-                        <th>结束时间</th>
+                        <th>添加时间</th>
+                        <th>结束时间</th>                        
                         <th>操作</th>
                      </tr>  
-                     <form action="?" method="get">
+                     <form id="search_domain" action="?" method="get">
+                     <input type="hidden" id="action" name="action" value="" />
                      <div class="bulk-actions align-left">
                         名称：
                         <input class="text-input small-input" type="text" id="name" name="name" value="<?php echo I('get.name'); ?>" />
@@ -47,6 +49,7 @@
                              </a>
                          </td>
                          <td> <?php echo $domain['jump_domain']; ?> </td>
+                         <td> <?php echo date( 'Y-m-d H:i:s', $domain['add_time'] ); ?> </td>        
                          <td> <?php echo date( 'Y-m-d', $domain['end_time'] ); ?> </td>
                          <td>
                               <a href="{:U( 'Domain/edit', array( 'domain_id' => $domain['domain_id'] ) )}" title="Edit"><img src="__PUBLIC__/Admin/images/icons/pencil.png" alt="Edit" /></a>
@@ -57,15 +60,10 @@
                  
                  <tfoot>
                      <tr>
-                         <td colspan="6">                             
-                             <!-- <div class="pagination">
-                                 <a href="#" title="First Page">第一页</a><a href="#" title="Previous Page">上一页</a>
-                                 <a href="#" class="number" title="1">1</a>
-                                 <a href="#" class="number" title="2">2</a>
-                                 <a href="#" class="number current" title="3">3</a>
-                                 <a href="#" class="number" title="4">4</a>
-                                 <a href="#" title="Next Page">下一页</a><a href="#" title="Last Page">最后一页</a>
-                             </div>  -->
+                         <td colspan="6">    
+                            <div class="bulk-actions align-left">
+                                <a class="button" onclick="export_excel();" >导出Excel</a>
+                            </div>                         
                              <div class="pagination">
                              <?php echo $page; ?>
                              </div>
@@ -77,69 +75,17 @@
              
          </div> <!-- End #tab1 -->
          
-         <div class="tab-content" id="tab2">
-         
-             <form action="" method="post">
-                 
-                 <fieldset> <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
-                     
-                     <p>
-                         <label>Small form input</label>
-                             <input class="text-input small-input" type="text" id="small-input" name="small-input" /> <span class="input-notification success png_bg">Successful message</span> <!-- Classes for input-notification: success, error, information, attention -->
-                             <br /><small>A small description of the field</small>
-                     </p>
-                     
-                     <p>
-                         <label>Medium form input</label>
-                         <input class="text-input medium-input datepicker" type="text" id="medium-input" name="medium-input" /> <span class="input-notification error png_bg">Error message</span>
-                     </p>
-                     
-                     <p>
-                         <label>Large form input</label>
-                         <input class="text-input large-input" type="text" id="large-input" name="large-input" />
-                     </p>
-                     
-                     <p>
-                         <label>Checkboxes</label>
-                         <input type="checkbox" name="checkbox1" /> This is a checkbox <input type="checkbox" name="checkbox2" /> And this is another checkbox
-                     </p>
-                     
-                     <p>
-                         <label>Radio buttons</label>
-                         <input type="radio" name="radio1" /> This is a radio button<br />
-                         <input type="radio" name="radio2" /> This is another radio button
-                     </p>
-                     
-                     <p>
-                         <label>This is a drop down list</label>              
-                         <select name="dropdown" class="small-input">
-                             <option value="option1">Option 1</option>
-                             <option value="option2">Option 2</option>
-                             <option value="option3">Option 3</option>
-                             <option value="option4">Option 4</option>
-                         </select> 
-                     </p>
-                     
-                     <p>
-                         <label>Textarea with WYSIWYG</label>
-                         <textarea class="text-input textarea wysiwyg" id="textarea" name="textfield" cols="79" rows="15"></textarea>
-                     </p>
-                     
-                     <p>
-                         <input class="button" type="submit" value="Submit" />
-                     </p>
-                     
-                 </fieldset>
-                 
-                 <div class="clear"></div><!-- End .clear -->
-                 
-             </form>
-             
-         </div> <!-- End #tab2 -->        
-         
      </div> <!-- End .content-box-content -->   
        
 </div> <!-- End .content-box -->    
+
+<script type="text/javascript">
+    function export_excel()
+    {
+        $('#action').val( 'export' );
+        $('#search_domain').submit();
+    }
+</script>
 
 <!-- 底部文件 -->
 <include file="Public/footer" />

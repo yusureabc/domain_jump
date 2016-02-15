@@ -1,0 +1,56 @@
+<!-- 头部文件 -->
+<include file="Public/header" />  
+<!-- 左侧菜单 -->
+<include file="Public/left_menu" />        
+<!-- 左侧菜单 -->
+<include file="Public/top" />
+            
+<div class="content-box"><!-- Start Content Box -->        
+<div class="content-box-header">                    
+    <h3>修改密码</h3>                                   
+    <div class="clear"></div>                    
+</div> <!-- End .content-box-header -->
+        
+<div class="content-box-content">
+<div id="tab2">    
+<form action="{:U('Setting/up_passwd')}" method="post" id="addform">
+<fieldset>
+    <p>
+        <label> 旧密码：</label>
+        <input class="text-input small-input" type="password" id="old_pwd" name="old_pwd" datatype="*" nullmsg="请输入旧密码！" errormsg="请输入旧密码！" ajaxurl="{:U('Setting/check_oldpwd_ajax')}" /> 
+        <span class="Validform_checktip"></span>
+    </p>
+
+    <p>
+        <label> 新密码：</label>
+        <input class="text-input small-input" type="password" id="new_pwd" name="new_pwd" datatype="*6-16" nullmsg="请设置密码！" errormsg="密码范围在6~16位之间！" />
+        <span class="Validform_checktip"></span> 
+    </p>
+
+    <p>
+        <label> 确认密码：</label>
+        <input class="text-input small-input" type="password" id="confirm_pwd" name="confirm_pwd" datatype="*" recheck="new_pwd" nullmsg="请再输入一次密码！" errormsg="您两次输入的密码不一致！" />
+        <span class="Validform_checktip"></span> 
+    </p>
+
+    <p>
+        <input class="button" type="submit" value="确定" />
+    </p>
+    
+</fieldset>                                
+</form>
+</div> <!-- End #tab2 -->                            
+</div> <!-- End .content-box-content -->                
+</div> <!-- End .content-box -->    
+
+
+<script type="text/javascript">
+$(function(){
+    $("#addform").Validform({
+        tiptype:3
+    });    
+})
+</script>
+
+<!-- 底部文件 -->
+<include file="Public/footer" />

@@ -69,6 +69,8 @@ class DomainController extends Controller
             $res = $domain_model->add( $data );
             if ( $res )
             {
+                /* 记录日志 */
+                add_log( '添加域名'.$data['domain'] );
                 $this->success( '添加成功！', U( 'Domain/domain_list' ) );
             }
             else
@@ -92,7 +94,34 @@ class DomainController extends Controller
      */
     public function edit()
     {
-        $this->display();
+        $domain_id = I( 'domain_id', '', 'intval' ) or $this->error( 'ID获取失败！' );
+        $domain_model = D( 'Domain' );
+        $condition = array();
+        $condition['domain_id'] = $domain_id;
+        if ( IS_POST )
+        {
+            $this->_checkData();
+            $data['name']        = I( 'post.name', '', 'trim' );
+            $data['jump_domain'] = I( 'post.jump_domain', '', 'trim' );
+            $data['end_time']    = I( 'post.end_time', '', 'strtotime' );
+            $data['edit_time']   = time();
+            $result = $domain_model->update( $condition, $data );
+            if ( $result !== false )
+            {
+                add_log( '编辑域名'.I('post.domain') );
+                $this->success( '操作成功！', U( 'Domain/domain_list' ) );
+            }
+            else
+            {
+                $this->error( '操作失败！' );
+            }
+        }
+        else
+        {            
+            $domain_info = $domain_model->get_one( $condition );
+            $this->assign( 'domain_info', $domain_info );
+            $this->display();
+        }
     }
 
     /**

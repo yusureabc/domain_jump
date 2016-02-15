@@ -87,6 +87,8 @@ class LoginController extends Controller
         else
         {
             session( 'user_info', $user_info );
+            /* 记录日志 */
+            add_log( '登陆系统' );
             $this->success( '登陆成功！', U('Index/index') );
         }
         

@@ -34,16 +34,18 @@
                     <ul>
                         <li><a class="{:current_action( 'Domain', 'add' )}" href="{:U( 'Domain/add' )}">添加域名</a></li>
                         <li><a class="{:current_action( 'Domain', 'domain_list' )}" href="{:U( 'Domain/domain_list' )}">域名列表</a></li> 
+                        <?php if ( CONTROLLER_NAME == 'Domain' && ACTION_NAME == 'edit' ) { ?>
                         <li><a class="{:current_action( 'Domain', 'edit' )}" href="{:U( 'Domain/edit' )}">编辑域名</a></li>
+                        <?php } ?>
                     </ul>
                 </li>
                 
                 <li>
-                    <a href="#" class="nav-top-item {:current_controller( 'Logs' )}">
+                    <a href="#" class="nav-top-item {:current_controller( 'Log' )}">
                     操作记录
                     </a>
                     <ul>
-                        <li><a class="{:current_action( 'Logs', 'list' )}" href="{:U( 'Logs/list' )}">日志记录</a></li>
+                        <li><a class="{:current_action( 'Log', 'index' )}" href="{:U( 'Log/index' )}">日志记录</a></li>
                     </ul>
                 </li>
                 

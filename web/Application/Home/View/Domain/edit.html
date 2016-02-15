@@ -1,0 +1,74 @@
+<!-- 头部文件 -->
+<include file="Public/header" />  
+<!-- 左侧菜单 -->
+<include file="Public/left_menu" />        
+<!-- 左侧菜单 -->
+<include file="Public/top" />
+            
+<div class="content-box"><!-- Start Content Box -->        
+<div class="content-box-header">                    
+    <h3>编辑域名</h3>                                   
+    <div class="clear"></div>                    
+</div> <!-- End .content-box-header -->
+        
+<div class="content-box-content">
+<div id="tab2">    
+<form action="{:U('Domain/edit')}" method="post" id="addform">
+<input type="hidden" name="domain_id" value="<?php echo $domain_info['domain_id']; ?>" />
+<fieldset>
+    <p>
+        <label> 公司( 个人 )名称：</label>
+        <input class="text-input small-input" type="text" id="name" name="name" value="<?php echo $domain_info['name']; ?>" datatype="s2-50" nullmsg="请输入名称！" errormsg="昵称至少2个字符,最多50个字符！" /> 
+        <span class="Validform_checktip"></span>
+    </p>
+
+    <p>
+        <label> 域名：</label>
+        <?php echo $domain_info['domain']; ?>
+        <input type="hidden" name="domain" value="<?php echo $domain_info['domain']; ?>" />
+    </p>
+
+    <p>
+        <label> 跳转域名：</label>
+        <input class="text-input small-input" type="text" id="jump_domain" name="jump_domain" value="<?php echo $domain_info['jump_domain']; ?>" datatype="url" nullmsg="请输入域名！" errormsg="请输入正确格式" />
+        <span class="Validform_checktip"></span> 
+        <br /><small> 例: http://bzyinshua.b2b.huishangbao.com/ 需要添加　http:// </small>
+    </p>
+
+    <p>
+        <label> 结束日期：</label>
+        <input class="text-input small-input" type="text" id="end_time" name="end_time" value="<?php echo date( 'Y-m-d', $domain_info['end_time'] ); ?>" readonly datatype="*" nullmsg="请选择日期！" errormsg="请选择日期！" />
+        <span class="Validform_checktip"></span> 
+        <br /><small> 域名跳转结束日期 </small>
+    </p>
+
+    <p>
+        <input class="button" type="submit" value="添加" />
+    </p>
+    
+</fieldset>                                
+</form>
+</div> <!-- End #tab2 -->                            
+</div> <!-- End .content-box-content -->                
+</div> <!-- End .content-box -->    
+
+<script type="text/javascript">
+    $('#end_time').datetimepicker({
+        lang:'ch',
+        timepicker:false,
+        format:'Y-m-d',
+        formatDate:'Y-m-d',
+    });
+</script>
+
+<script type="text/javascript">
+$(function(){
+    //$(".registerform").Validform();  //就这一行代码！;    
+    $("#addform").Validform({
+        tiptype:3
+    });    
+})
+</script>
+
+<!-- 底部文件 -->
+<include file="Public/footer" />

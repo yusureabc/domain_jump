@@ -26,3 +26,19 @@ function current_action( $controller_name, $action_name )
 {
     echo CONTROLLER_NAME == $controller_name && ACTION_NAME == $action_name ? 'current' : '';
 }
+
+/**
+ * 记录用户 操作日志
+ * @author Yusure  http://yusure.cn
+ * @date   2016-02-15
+ * @param  [param]
+ */
+function add_log( $msg )
+{
+    $log_model = M( 'Log' );
+    $data['add_time']  = time();
+    $data['user_id']   = session('user_info.user_id');
+    $data['user_name'] = session('user_info.user_name');
+    $data['log_msg']   = $msg;
+    $log_model->add( $data );
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>错误</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+<meta name="format-detection" content="telephone=no" />
+
+<link href="http://libs.useso.com/js/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+/*文本颜色样式*/
+.txt-default{color:#444;}
+.txt-primary{color:#09c;}
+.txt-success{color:#5cb85c;}
+.txt-info{color:#5bc0de;}
+.txt-warning{color:#f0ad4e;}
+.txt-danger{color:#d9534f;}
+.txt-gray{color:#aaa;}
+/*提示框*/
+.alert{padding:15px;margin-bottom:20px;border:1px solid transparent;border-radius:4px;behavior:url(pie.htc);}
+.alert-success{color:#3c763d;background-color:#dff0d8;border-color:#d6e9c6;}
+.alert-info{color:#31708f;background-color:#d9edf7;border-color:#bce8f1;}
+.alert-warning{color:#8a6d3b;background-color:#fcf8e3;border-color:#faebcc;}
+.alert-danger{color:#a94442;background-color:#f2dede;border-color:#ebccd1;}
+.popup{background-color:#fff;width:478px;padding:40px 20px;border-radius:5px;text-align:center;overflow:hidden;z-index:99999;box-shadow: 1px 1px 2px 0 #ccc;behavior:url(pie.htc);}
+.popup-ico{width:80px;height:80px;margin:0 auto;line-height:80px;}
+.popup h2{font-size:1.875em;font-weight:700;padding:20px 0;color:#444;}
+.popup p{padding:0 0 30px;color:#aaa;line-height:140%;}
+</style>
+</head>
+<body>
+	<div class="popup" style="width:90%;margin:15% 5% 15% 5%">
+	      <div class="popup-ico txt-danger"><i class="fa fa-times-circle fa-5x"></i></div>
+	      <h2>提示信息</h2>
+	      <p><?php echo($error); ?></p>
+	      <p class="jump">页面自动 <a id="href" href="<?php echo($jumpUrl); ?>">跳转</a> 等待时间： <b id="wait"><?php echo($waitSecond); ?></b>
+</p>
+    </div>
+    <script type="text/javascript">
+(function(){
+var wait = document.getElementById('wait'),href = document.getElementById('href').href;
+var interval = setInterval(function(){
+	var time = --wait.innerHTML;
+	if(time <= 0) {
+		location.href = href;
+		clearInterval(interval);
+	};
+}, 1000);
+})();
+</script>
+</body>
+</html>

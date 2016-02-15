@@ -40,4 +40,14 @@ class DomainModel extends Model
     {
         return $this->where( $condition )->count();
     }
+
+    /**
+     * 更新数据
+     * @author Yusure  http://yusure.cn
+     * @date   2016-02-15
+     */
+    public function update( $condition, $data )
+    {
+        return $this->where( $condition )->save( $data );
+    }
 }

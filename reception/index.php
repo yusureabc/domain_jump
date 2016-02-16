@@ -28,6 +28,7 @@ $domain = strtolower( $_SERVER["HTTP_HOST"] );
 $sql = "SELECT jump_domain, end_time FROM {$config['prefix']}domain WHERE domain = '$domain'";
 $result = mysql_query( $sql );
 $domain_info = mysql_fetch_assoc( $result );
+mysql_close( $link );
 
 if ( ! $domain_info ) { die( '解析成功！技术维护Email：czhyusure@163.com' ); }
 
